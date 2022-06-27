@@ -1,0 +1,48 @@
+{% extends 'base.html' %}   
+
+
+{% block body %}
+<strong>Survey Form:</strong>
+{%if not submitted %}
+<form method="POST" action="survey">
+    <div class="col-4">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelp" required>
+      
+    </div>
+    <div class="col-4">
+      <label for="gender" class="form-label">Gender</label>
+      <select name="gender" id="gender" required>
+          <option value="">---</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+      </select>
+    </div>
+    
+    <div class="col-4">
+        <label for="age" class="form-label">Age</label>
+        <input type="text" class="form-control" name="age" id="age" pattern="[0-9]{1,3}" title="1-3 digits allowed" required>
+    </div>
+
+    <div class="col-4">
+        <label for="city-type" class="form-label">City Type</label>
+        <select  name="city-type" id="city-type" required>
+            <option value="">---</option>
+            <option value="metro">Metro</option>
+            <option value="non-metro">Non Metro</option>
+        </select>
+    </div>    
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  {%else%}
+
+  <strong>Thanks for completing the survey!Details sent to email!</strong>
+  <table class="table table-striped">
+  {% for e in submitted%}
+    
+    <tr><td>{{e}}</td><td>{{submitted[e]}}</td></tr>
+  {%endfor%}
+  </table>
+  {% endif %}
+{% endblock %}

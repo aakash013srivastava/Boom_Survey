@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{%block body%}
+{%if message %}
+    {{message}}
+{% endif %}
+<br/>
+<strong>Register</strong>
+<form method="POST" action="register">
+    <div class="col-4">
+      <label for="Email1" class="form-label">Email address</label>
+      <input type="email" class="form-control" name="Email1" id="Email1"  aria-describedby="emailHelp" required>
+    </div>
+    <div class="col-4">
+      <label for="Password1" class="form-label">Password</label>
+      <input type="password" class="form-control" id="Password1" name="Password1"  pattern=".{8,}" title="Eight or more characters" required>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+{%endblock%}
